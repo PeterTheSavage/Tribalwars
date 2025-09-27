@@ -41,7 +41,8 @@ if ($conf['admin_key'] === 'actions_massiv_keyaaassd') {
 			if (is_array($output_serw)) $servers_string = implode(",",$output_serw);
 			
 			$out_cont .= "<?php\n";
-			$out_cont .= "//Dodawanie serwer�w znajduje si� na adresie:'http://localhost/admin.php?screen=create_new_server'\n";
+			$domain = $_SERVER['HTTP_HOST'] ?? 'localhost';
+			$out_cont .= "//Dodawanie serwerów znajduje się na adresie:'http://$domain/admin.php?screen=create_new_server'\n";
 			$out_cont .= '$serwery = array('.$servers_string.");\n";
 			$out_cont .= '?>';
 		

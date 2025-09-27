@@ -825,7 +825,8 @@ if ($conf['admin_key'] == 'actions_massiv_keyaaassd') {
 		$cont = implode(',',$serwery);
 		
 		$out_cont .= "<?php\n";
-		$out_cont .= "//Adicionar servidores este no endereco:'http://localhost/admin.php?screen=create_new_server'\n";
+		$domain = $_SERVER['HTTP_HOST'] ?? 'localhost';
+		$out_cont .= "//Adicionar servidores este no endereco:'http://$domain/admin.php?screen=create_new_server'\n";
 		$out_cont .= '$serwery = array('.$cont.");\n";
 		$out_cont .= '?>';
 		

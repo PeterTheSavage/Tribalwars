@@ -24,11 +24,12 @@ Bem-vindo ao painel de instalação do motor tribos!</br>
 Para ir além, selecione o tipo de servidor que você está configurando e clique em "próximo".</br>
 <form method="post" action="install.php?p=1">
 <br>
-<label><input type="radio" checked="checked" name="typ" value="1" />servidor privado (computador, <b>VPS</b>)</label><br />
-<label><input type="radio" name="typ" value="2" />Servidor Público (Hospedagem Gratuita)</label><br />
+<label><input type="radio" name="typ" value="1" />servidor privado (VPS, servidor dedicado)</label><br />
+<label><input type="radio" checked="checked" name="typ" value="2" />Hospedagem Web (Plesk, cPanel)</label><br />
 <input type="submit" value="Dalej">
-<h2>Uwaga!</h2>
+<h2>Atenção!</h2>
 Especificar o tipo errado resulta na remoção de opções adicionais!
+Esta versão foi otimizada para funcionar com Plesk e outros painéis de hospedagem web.
 
 
 
@@ -39,9 +40,10 @@ Especificar o tipo errado resulta na remoção de opções adicionais!
 if($_GET['p'] == 1) {
 if ($_POST['typ'] == 1) {
 $typ = 'false';
-$domyslne_mysql = true;
+$domyslne_mysql = false; // VPS/dedicated servers need custom DB config
 } else {
 $typ = 'true';
+$domyslne_mysql = true; // Web hosting typically uses default configs
 }
 $fdo = fopen('configs/typ.php', 'w');
 fwrite($fdo, "<?php\n");
@@ -60,12 +62,13 @@ Host do banco de dados:</br> <input id="textfield" type="text" name="database_ho
 Nome do banco de dados:  </br>                   <input id="textfield" type="text" name="database_name"></br>
 usuário do banco de dados:  </br>     <input id="textfield" type="text" name="nick"></br>
 Senha do banco de dados:   </br>   <input id="textfield" type="text" name="pass"></br>
-<h2>Atenção!</h2><br>Insira aqui os dados que você recebeu na hospedagem gratuita!
+<h2>Atenção!</h2><br>Para hospedagem web (Plesk, cPanel), insira os dados do banco de dados fornecidos pelo seu provedor!
 <?php } else { ?>
-Host do banco de dados:</br> <input id="textfield" type="text" name="database_host" readonly="readonly" value="localhost"></br>
-Nome do banco de dados:  </br>                   <input id="textfield" type="text" name="database_name" readonly="readonly"value="index_tw"></br>
-usuário do banco de dados:  </br>     <input id="textfield" type="text" name="nick" readonly="readonly" value="root"></br>
-Senha do banco de dados:   </br>   <input id="textfield" type="text" name="pass" readonly="readonly" value="plemionka"></br>
+Host do banco de dados:</br> <input id="textfield" type="text" name="database_host" value="localhost"></br>
+Nome do banco de dados:  </br>                   <input id="textfield" type="text" name="database_name" placeholder="Ex: tribalwars_db"></br>
+usuário do banco de dados:  </br>     <input id="textfield" type="text" name="nick" placeholder="Ex: tribalwars_user"></br>
+Senha do banco de dados:   </br>   <input id="textfield" type="password" name="pass" placeholder="Digite sua senha do banco"></br>
+<h2>Configuração Recomendada</h2><br>Para melhor segurança, configure as variáveis de ambiente no Plesk!
 <?php } ?>
 <input type="submit" value="Dalej" name="submit2">
 </form>
