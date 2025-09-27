@@ -1,0 +1,32 @@
+# Windows-specific files that should not be in Plesk deployment
+*.exe
+*.bat
+*.dll
+
+# Apache server files (not needed in Plesk)
+/apache/
+/mysql/
+/php/
+/phpMyAdmin/
+
+# Windows start/stop scripts
+Serwer.bat
+Start.exe
+Stop.exe
+Zainstaluj.bat
+apache_start.bat
+apache_stop.bat
+mysql_start.bat
+mysql_stop.bat
+dslan_start.bat
+program.bat
+
+# Installation programs for Windows
+/install/
+
+# Temporary files
+*.tmp
+*.log
+
+# Development/testing files that shouldn't be deployed
+/tmp/

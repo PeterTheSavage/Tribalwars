@@ -65,9 +65,20 @@
 
 ### Instalação
 
-1. Clone o projecto pelo guit
+#### Para Windows (Método Original)
+1. Clone o projecto pelo git
 2. Está tendo problemas para baixar?
 Caso o download da base esteja corrompendo, baixe utilizando o [GitHub Desktop](https://desktop.github.com).
+
+#### Para Plesk/Hospedagem Web (Novo)
+1. Faça download apenas da pasta `htdocs/`
+2. Carregue o conteúdo para o document root do seu domínio
+3. Configure as variáveis de ambiente do banco de dados no Plesk
+4. Importe os arquivos SQL: `index_tw.sql`, `lan_1.sql`, `news_db.sql`
+5. Acesse `https://seudominio.com/welcome.php` para verificar a configuração
+6. Execute a instalação em `https://seudominio.com/install.php`
+
+**Consulte o [Guia de Implantação Plesk](PLESK_DEPLOYMENT.md) para instruções detalhadas.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -76,8 +87,10 @@ Caso o download da base esteja corrompendo, baixe utilizando o [GitHub Desktop](
 <!-- USAGE EXAMPLES -->
 ## Utilidade
 
-- Bases tribalwars (Tribos) para ser executadas em windows.
+- Bases tribalwars (Tribos) para ser executadas em Windows ou hospedagem web.
+- **Agora otimizado para Plesk e outros painéis de hospedagem web!**
 - Pode tentar rodar em linux mas as versões da bases e ficheiros encontram-se programados para versões obsuletas.
+- **Nova versão com suporte completo para ambientes de hospedagem compartilhada.**
 
 
 <!-- ROADMAP -->

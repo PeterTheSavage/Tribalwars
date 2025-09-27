@@ -1,0 +1,71 @@
+# Tribalwars .htaccess for Plesk hosting
+RewriteEngine On
+
+# Security measures
+# Prevent access to sensitive files
+<Files "*.inc">
+    Order allow,deny
+    Deny from all
+</Files>
+
+<Files "config*.php">
+    Order allow,deny
+    Deny from all
+    # Allow access from localhost for installation
+    Allow from 127.0.0.1
+    Allow from ::1
+</Files>
+
+# Prevent access to install directory after installation
+# Uncomment the following lines after successful installation:
+# <Directory "install">
+#     Order allow,deny
+#     Deny from all
+# </Directory>
+
+# Error pages
+ErrorDocument 404 /modelo/404.php
+ErrorDocument 403 /modelo/403.php
+
+# PHP Settings for better compatibility
+php_flag display_errors Off
+php_flag log_errors On
+php_value max_execution_time 300
+php_value memory_limit 128M
+php_value post_max_size 32M
+php_value upload_max_filesize 32M
+
+# Enable compression if available
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Cache static files
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpg "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/pdf "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# URL Rewriting for clean URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^mundo([0-9]+)/(.*)$ modelo/$2?server=$1 [QSA,L]
+
+# Redirect old localhost references
+RewriteCond %{QUERY_STRING} ^(.*)localhost(.*)$
+RewriteRule ^(.*)$ $1? [R=301,L]

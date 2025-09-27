@@ -14,10 +14,10 @@ Awards.Php aprimorados - selecionando apenas os registros apropriados da base
 //Id serwera:
 $config['__SERVER__ID'] = 1;
 
-//Konfiguracja bazy danych:
-$config['db_host'] = 'localhost';
-$config['db_user'] = 'root';
-$config['db_pw'] = 'plemionka';
+//Konfiguracja bazy danych (Plesk-compatible):
+$config['db_host'] = $_ENV['DB_HOST'] ?? $_SERVER['DB_HOST'] ?? 'localhost';
+$config['db_user'] = $_ENV['DB_USER'] ?? $_SERVER['DB_USER'] ?? 'root';
+$config['db_pw'] = $_ENV['DB_PASS'] ?? $_SERVER['DB_PASS'] ?? 'plemionka';
 $config['db_name'] = 'lan_'.$config['__SERVER__ID'];
 
 //Passy do admina
