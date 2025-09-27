@@ -1,7 +1,8 @@
 <?php
-// Plesk-compatible database configuration using environment variables
-$conf['db_host'] = $_ENV['DB_HOST'] ?? $_SERVER['DB_HOST'] ?? 'localhost';
-$conf['db_user'] = $_ENV['DB_USER'] ?? $_SERVER['DB_USER'] ?? 'root';
-$conf['db_pass'] = $_ENV['DB_PASS'] ?? $_SERVER['DB_PASS'] ?? 'plemionka';
-$conf['db_name'] = $_ENV['DB_NAME'] ?? $_SERVER['DB_NAME'] ?? 'index_tw';
+// Plesk-compatible database configuration
+// Include centralized database configuration
+require_once __DIR__ . '/database_config.php';
+
+// Maintain backward compatibility
+// Variables are already set by database_config.php
 ?>

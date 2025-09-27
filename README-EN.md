@@ -64,9 +64,20 @@
 
 ### Installation
 
+#### For Windows (Original Method)
 1. Clone the project using git
 2. You are having problems downloading?
 If the base download is corrupting, download using the [GitHub Desktop](https://desktop.github.com).
+
+#### For Plesk/Web Hosting (New)
+1. Download only the `htdocs/` folder
+2. Upload the contents to your domain's document root
+3. Configure database environment variables in Plesk
+4. Import the SQL files: `index_tw.sql`, `lan_1.sql`, `news_db.sql`
+5. Access `https://yourdomain.com/welcome.php` to verify configuration
+6. Run installation at `https://yourdomain.com/install.php`
+
+**See the [Plesk Deployment Guide](PLESK_DEPLOYMENT.md) for detailed instructions.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -75,8 +86,10 @@ If the base download is corrupting, download using the [GitHub Desktop](https://
 <!-- USAGE EXAMPLES -->
 ## Utility
 
-- Tribalwars bases (Tribes) to be run on Windows.
+- Tribalwars bases (Tribes) to be run on Windows or web hosting.
+- **Now optimized for Plesk and other web hosting panels!**
 - You can try to run on Linux but the database and file versions are programmed for obsolete versions.
+- **New version with full support for shared hosting environments.**
 
 
 <!-- ROADMAP -->
